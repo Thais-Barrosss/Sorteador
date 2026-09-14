@@ -6,15 +6,23 @@ function sortear(){
     let sorteados = [];
 
     for (let i = 0; i < quantidade; i++) {
-        numero = obterNumerosAleatorios(de, ate);
+        let numero = obterNumerosAleatorios(de, ate);
+
+
+      while (sorteados.includes(numero)) {
+          numero = obterNumerosAleatorios(de, ate);
+        }
+
         sorteados.push(numero);
     }
-    alert(`Números sorteados: ${sorteados.join(", ")}`);
 
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`;
 }
 
 function obterNumerosAleatorios(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
   // Irá gerar um número aleatório entre min e max, incluindo ambos os valores.
+
 
 }
